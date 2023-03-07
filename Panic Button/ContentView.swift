@@ -17,9 +17,15 @@ struct ContentView: View {
     )
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             Map(coordinateRegion: $region)
                 .edgesIgnoringSafeArea(.all)
+            
+            Button(action: {}) {
+                Label("Boton", systemImage: "person")
+            }
+            .controlSize(.large)
+            .buttonStyle(.borderedProminent)
         }
     }
 }
