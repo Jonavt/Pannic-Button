@@ -65,23 +65,40 @@ struct HomeView: View {
                 .cornerRadius(20)
             }
             
-            HStack(alignment: .center, spacing: 0) {
+            HStack(alignment: .center, spacing: 15) {
                 Button {
                     
                 } label: {
-                    Label("Enviar mensaje", systemImage: "paperplane.fill")
+                    HStack(alignment: .center, spacing: 0) {
+                        Spacer(minLength: 0)
+                        
+                        Image(systemName: "paperplane.fill")
+                            .padding(.trailing, 5)
+                        
+                        Text("Enviar mensaje")
+                        
+                        Spacer(minLength: 0)
+                    }
                 }
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(15)
                 .accentColor(.black)
                 
-                Spacer()
                 
                 Button {
                     
                 } label: {
-                    Label("Enviar mensaje", systemImage: "paperplane.fill")
+                    HStack(alignment: .center, spacing: 0) {
+                        Spacer(minLength: 0)
+                        
+                        Image(systemName: "phone.fill")
+                            .padding(.trailing, 5)
+                        
+                        Text("Emergencias")
+            
+                        Spacer(minLength: 0)
+                    }
                 }
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
@@ -90,7 +107,6 @@ struct HomeView: View {
                 
             }
             
-//            Spacer()
         }
         .padding()
     }
