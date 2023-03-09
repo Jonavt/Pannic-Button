@@ -15,7 +15,9 @@ struct HomeView: View {
         latitudinalMeters: 750,
         longitudinalMeters: 750
     )
-
+    
+    @State var place = IdentifiablePlace(lat: 19.0549, long: -98.2845)
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 25) {
             HStack {
@@ -35,9 +37,14 @@ struct HomeView: View {
                 .clipShape(Circle())
             }
             
-            Map(coordinateRegion: $region)
-                .frame(minHeight: 400)
-                .cornerRadius(20)
+            Map(coordinateRegion: $region,
+                annotationItems: [place])
+            { place in
+                MapMarker(coordinate: place.location,
+                       tint: Color.orange)
+            }
+            .frame(minHeight: 400)
+            .cornerRadius(20)
 
 //            Spacer()
             
@@ -62,6 +69,7 @@ struct HomeView: View {
                 .background {
                     ZStack(alignment: .center) {
                         Color("Red")
+                        
                         Circle()
                             .strokeBorder(.white, lineWidth: 2)
                             .frame(width: 180, height: 180)
@@ -120,8 +128,6 @@ struct HomeView: View {
                 .accentColor(.secondary)
                 
             }
-            
-            
         }
         .padding()
     }
@@ -130,5 +136,16 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+    }
+}
+
+struct IdentifiablePlace: Identifiable {
+    let id: UUID
+    let location: CLLocationCoordinate2D
+    init(id: UUID = UUID(), lat: Double, long: Double) {
+        self.id = id
+        self.location = CLLocationCoordinate2D(
+            latitude: lat,
+            longitude: long)
     }
 }
