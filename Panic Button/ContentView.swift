@@ -21,11 +21,12 @@ struct ContentView: View {
             Map(coordinateRegion: $region)
                 .edgesIgnoringSafeArea(.all)
             
-            Button(action: {}) {
-                Label("Boton", systemImage: "person")
-            }
             .controlSize(.large)
             .buttonStyle(.borderedProminent)
+            .sheet(isPresented: .constant(true)) {
+                HomeView()
+                    .presentationDetents([.fraction(0.4)])
+            }
         }
     }
 }
