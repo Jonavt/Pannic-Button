@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8033FFB29C13DE1007FA9EF /* SeleccionarContactosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */; };
 		A897CE1129B7FE3F00BE3E5C /* Panic_ButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */; };
 		A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1229B7FE3F00BE3E5C /* ContentView.swift */; };
 		A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1429B7FE4000BE3E5C /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeleccionarContactosView.swift; sourceTree = "<group>"; };
 		A897CE0D29B7FE3F00BE3E5C /* Panic Button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Panic Button.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panic_ButtonApp.swift; sourceTree = "<group>"; };
 		A897CE1229B7FE3F00BE3E5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */,
 				A897CE1229B7FE3F00BE3E5C /* ContentView.swift */,
 				CAD316FB29BA913E00638C6C /* HomeView.swift */,
+				A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */,
 				A8EFB40A29BAA54E00B5C742 /* ContactsPermission.swift */,
 				A897CE1429B7FE4000BE3E5C /* Assets.xcassets */,
 				A897CE1629B7FE4000BE3E5C /* Preview Content */,
@@ -146,6 +149,7 @@
 				A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */,
 				CAD316FC29BA913E00638C6C /* HomeView.swift in Sources */,
 				A897CE1129B7FE3F00BE3E5C /* Panic_ButtonApp.swift in Sources */,
+				A8033FFB29C13DE1007FA9EF /* SeleccionarContactosView.swift in Sources */,
 				A8EFB40B29BAA54E00B5C742 /* ContactsPermission.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
