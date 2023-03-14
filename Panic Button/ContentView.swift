@@ -9,12 +9,9 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            
             HomeView()
-            
         }
     }
 }
