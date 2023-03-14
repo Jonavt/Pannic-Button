@@ -11,6 +11,7 @@
 		A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1229B7FE3F00BE3E5C /* ContentView.swift */; };
 		A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1429B7FE4000BE3E5C /* Assets.xcassets */; };
 		A897CE1829B7FE4000BE3E5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */; };
+		A8EFB40B29BAA54E00B5C742 /* ContactsPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EFB40A29BAA54E00B5C742 /* ContactsPermission.swift */; };
 		CAD316FC29BA913E00638C6C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD316FB29BA913E00638C6C /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		A897CE1229B7FE3F00BE3E5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A897CE1429B7FE4000BE3E5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A8EFB40A29BAA54E00B5C742 /* ContactsPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPermission.swift; sourceTree = "<group>"; };
 		CAD316FB29BA913E00638C6C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 				A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */,
 				A897CE1229B7FE3F00BE3E5C /* ContentView.swift */,
 				CAD316FB29BA913E00638C6C /* HomeView.swift */,
+				A8EFB40A29BAA54E00B5C742 /* ContactsPermission.swift */,
 				A897CE1429B7FE4000BE3E5C /* Assets.xcassets */,
 				A897CE1629B7FE4000BE3E5C /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 				A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */,
 				CAD316FC29BA913E00638C6C /* HomeView.swift in Sources */,
 				A897CE1129B7FE3F00BE3E5C /* Panic_ButtonApp.swift in Sources */,
+				A8EFB40B29BAA54E00B5C742 /* ContactsPermission.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +282,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +311,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
