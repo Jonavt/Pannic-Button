@@ -11,37 +11,44 @@ struct ContactsPermission: View {
     var body: some View {
         VStack(alignment:.center, spacing: 25) {
             
-                Text("Acceso a tus contactos")
-                    .font(.largeTitle.weight(.bold))
-                    .padding(.top,50)
-                    
-                    
+            Text("Permite acceso a tus contactos")
+                .font(.largeTitle.weight(.bold))
+                .padding(.top,50)
+                .multilineTextAlignment(.center)
+            
+            
             Spacer()
-                
+            
             Image("accessContacts")
                 .resizable()
                 .scaledToFit()
-                //.frame(width: 200, height: 200)
             
             Spacer()
             
             Text("Necesitamos acceso a tus contactos\n para poder enviar los mensajes")
-                .font(.headline).bold().italic()
+                .font(.headline)
+                .multilineTextAlignment(.center)
+            
+            Spacer()
+            
+            Button {
                 
-            Spacer()
+            } label: {
+                HStack {
+                    Spacer()
+                    Text("Dar permiso")
+                    Spacer()
+                }
+            }
+            .padding()
+            .font(.title3)
+            .foregroundColor(.white)
+            .background(Color.blue.opacity(0.9))
+            .cornerRadius(15)
+            .padding()
             
-            Button("Dar Permiso") {
-                        // Action code here
-                    }
-                    .padding(24)
-                    .font(.system(.title, design: .default))
-                    .frame(height: 40)
-                    .foregroundColor(.white)
-                    .background(Color.blue.opacity(0.9))
-                    .cornerRadius(10)
-            Spacer()
             
-           
+            
         }
     }
 }
