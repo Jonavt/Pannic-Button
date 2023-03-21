@@ -13,7 +13,7 @@ struct MessageView: View {
     @Environment(\.dismiss) var dismiss
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var countdown = 10
+    @State var countdown = 59
     
     var body: some View {
         GeometryReader { geo in
@@ -115,11 +115,12 @@ struct MessageView: View {
                             
                             Spacer(minLength: 0)
                         }
+                        .foregroundColor(Color("InvertedText"))
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
-                    .accentColor(.black)
+                    .accentColor(.primary)
 
                 }
             }
@@ -131,7 +132,7 @@ struct MessageView: View {
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .onReceive(timer) { time in
-            if countdown <= 10 && countdown > 0 {
+            if countdown <= 59 && countdown > 0 {
                 countdown -= 1
             }
             
@@ -141,6 +142,7 @@ struct MessageView: View {
                 }
             }
         }
+        .background(Color("Background1").ignoresSafeArea())
     }
 }
 

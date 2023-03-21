@@ -59,16 +59,17 @@ struct EmergencyView: View {
                         
                         Image(systemName: "phone.fill")
                             .padding(.trailing, 5)
-                        
+
                         Text("Llamar")
-                        
+
                         Spacer(minLength: 0)
                     }
+                    .foregroundColor(Color("InvertedText"))
                 }
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(15)
-                .accentColor(.black)
+                .accentColor(.primary)
 
             }
 
@@ -85,6 +86,7 @@ struct EmergencyView: View {
                 }
             }
         }
+        .background(Color("Background1").ignoresSafeArea())
 
     }
 }

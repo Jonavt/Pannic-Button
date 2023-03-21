@@ -20,7 +20,7 @@ struct PersonItem: View {
                 .clipShape(Circle())
             
             Text(name)
-                .font(.body)
+                .font(.footnote)
                 .multilineTextAlignment(.center)
                 .lineLimit(2, reservesSpace: true)
         }
@@ -33,3 +33,4 @@ struct PersonItem_Previews: PreviewProvider {
         PersonItem(image: "persona", name: "Antonio")
     }
 }
+

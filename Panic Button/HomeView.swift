@@ -124,11 +124,12 @@ struct HomeView: View {
                             
                             Spacer(minLength: 0)
                         }
+                        .foregroundColor(Color("InvertedText"))
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
-                    .accentColor(.black)
+                    .accentColor(.primary)
                     
 
                 }

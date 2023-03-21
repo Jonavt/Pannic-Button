@@ -59,5 +59,3 @@ struct ContactsPermission_Previews: PreviewProvider {
         ContactsPermission()
     }
 }
-    
-    
