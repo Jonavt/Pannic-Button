@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A8033FFB29C13DE1007FA9EF /* SeleccionarContactosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */; };
+		A87FF99B29CA66E8001CB328 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87FF99A29CA66E8001CB328 /* RegisterView.swift */; };
 		A897CE1129B7FE3F00BE3E5C /* Panic_ButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */; };
 		A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1229B7FE3F00BE3E5C /* ContentView.swift */; };
 		A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1429B7FE4000BE3E5C /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeleccionarContactosView.swift; sourceTree = "<group>"; };
+		A87FF99A29CA66E8001CB328 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A897CE0D29B7FE3F00BE3E5C /* Panic Button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Panic Button.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panic_ButtonApp.swift; sourceTree = "<group>"; };
 		A897CE1229B7FE3F00BE3E5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				CA7AFEE629C3D8210054D420 /* MessageView.swift */,
 				CA7AFEE829C3D8290054D420 /* EmergencyView.swift */,
 				CA7AFEEA29C3D8300054D420 /* PersonItem.swift */,
+				A87FF99A29CA66E8001CB328 /* RegisterView.swift */,
 				A897CE1429B7FE4000BE3E5C /* Assets.xcassets */,
 				A897CE1629B7FE4000BE3E5C /* Preview Content */,
 			);
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87FF99B29CA66E8001CB328 /* RegisterView.swift in Sources */,
 				CA7AFEE729C3D8210054D420 /* MessageView.swift in Sources */,
 				CA7AFEEB29C3D8300054D420 /* PersonItem.swift in Sources */,
 				A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */,
