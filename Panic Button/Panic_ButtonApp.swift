@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Panic_ButtonApp: App {
+    let navigationViewModel = NavigationViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(navigationViewModel)
         }
     }
 }
