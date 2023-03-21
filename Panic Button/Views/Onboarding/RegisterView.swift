@@ -13,7 +13,8 @@ struct RegisterView: View {
     @State var age: String = ""
     
     @State var showMessage = false
-    
+    @FocusState private var messageIsFocused: Bool
+
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             
@@ -25,10 +26,15 @@ struct RegisterView: View {
                 .scaledToFit()
                 .padding(.vertical, 30)
                 .padding(.horizontal, 20)
+                .frame(height: 300)
+            
 
             CustomField(searchText: $username, text: "Nombre")
+                .focused($messageIsFocused)
             CustomField(searchText: $lastName, text: "Apellidos")
+                .focused($messageIsFocused)
             CustomField(searchText: $age, text: "Edad")
+                .focused($messageIsFocused)
             
             
             Spacer()
@@ -49,6 +55,9 @@ struct RegisterView: View {
         .padding()
         .navigationDestination(isPresented: $showMessage) {
             DefineMessageView()
+        }
+        .onTapGesture {
+            messageIsFocused = false
         }
     }
     struct RegisterView_Previews: PreviewProvider {
