@@ -73,8 +73,10 @@ struct EmergencyView: View {
 
             }
 
+            Spacer()
         }
         .padding()
+        .padding(.top, 25)
         .onReceive(timer) { time in
             if countdown <= 10 && countdown > 0 {
                 countdown -= 1

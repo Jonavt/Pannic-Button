@@ -21,12 +21,17 @@ struct HomeView: View {
     @State var showMessage = false
     @State var showEmergency = false
     
+    @EnvironmentObject var locVM: LocationViewModel
+    
+    @State var showSuccess = false
+    @AppStorage("name") var username: String = ""
+
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 25) {
                 HStack {
-                    Text("Inicio")
-                        .font(.largeTitle.weight(.bold))
+                    Text("Hola, **\(username)**")
+                        .font(.largeTitle)
                     
                     Spacer()
                     
@@ -41,16 +46,51 @@ struct HomeView: View {
                     .clipShape(Circle())
                 }
                 
-                Map(coordinateRegion: $region,
-                    annotationItems: [place])
-                { place in
-                    MapMarker(coordinate: place.location,
-                           tint: Color.orange)
+                if let location = locVM.locationManager.location {
+                    
+                    Map(coordinateRegion: $locVM.region,
+                        annotationItems: [place])
+                    { place in
+                        MapMarker(coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
+                                  tint: Color.blue)
+                    }
+                    .frame(minHeight: 400)
+                    .overlay(
+                        Button(action: {
+                            withAnimation(.spring(response: 0.6, dampingFraction: 0.5, blendDuration: 0)) {
+                                locVM.region = MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                                                                   longitude: location.coordinate.longitude),
+                                    latitudinalMeters: 750,
+                                    longitudinalMeters: 750
+                                )
+                            }
+                        }, label: {
+                            if locVM.region.center.longitude != location.coordinate.longitude || locVM.region.center.latitude != location.coordinate.latitude {
+                                Image(systemName: "location")
+                                    .padding()
+                                    .background(Color("Background1"))
+                                    .foregroundColor(Color.blue)
+                                    .clipShape(Circle())
+                                    .padding(10)
+                            }
+                        })
+                        , alignment: Alignment(horizontal: .trailing, vertical: .bottom)
+                    )
+                    .cornerRadius(20)
+                } else {
+                    Map(coordinateRegion: $locVM.region,
+                        annotationItems: [place])
+                    { place in
+                        MapMarker(coordinate: place.location,
+                                  tint: Color.blue)
+                    }
+                    .frame(minHeight: 400)
+                    .cornerRadius(20)
+                    
                 }
-                .frame(minHeight: 400)
-                .cornerRadius(20)
-
-    //            Spacer()
+                
+                //            Spacer()
                 
                 Button {
                     
@@ -85,7 +125,7 @@ struct HomeView: View {
                             Circle()
                                 .strokeBorder(.white, lineWidth: 2)
                                 .frame(width: 380, height: 380)
-
+                            
                         }
                     }
                     .cornerRadius(20)
@@ -102,7 +142,7 @@ struct HomeView: View {
                                 .padding(.trailing, 5)
                             
                             Text("Emergencias")
-                
+                            
                             Spacer(minLength: 0)
                         }
                     }
@@ -131,12 +171,12 @@ struct HomeView: View {
                     .cornerRadius(15)
                     .accentColor(.primary)
                     
-
+                    
                 }
             }
             .padding()
             .sheet(isPresented: $showMessage) {
-                MessageView()
+                MessageView(showSuccess: $showSuccess)
             }
             .sheet(isPresented: $showEmergency) {
                 EmergencyView()
@@ -144,12 +184,55 @@ struct HomeView: View {
             }
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
+        .onAppear(perform: {
+            Task { @MainActor in
+                if let location = locVM.locationManager.location {
+                    locVM.region = MKCoordinateRegion(
+                        center: CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                                                       longitude: location.coordinate.longitude),
+                        latitudinalMeters: 750,
+                        longitudinalMeters: 750
+                    )
+                }
+            }
+        })
+        .overlay {
+            if showSuccess {
+                GeometryReader { geo in
+                    VStack {
+                        Spacer()
+                        
+                        VStack {
+                            Image(systemName: "paperplane")
+                                .font(.system(size: 50))
+                            
+                            Text("Mensaje enviado")
+                                .font(.title.bold())
+                            
+                            Text("Se ha enviado el mensaje \na tus contactos de emergencia")
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding()
+                        .padding(.vertical, 40)
+                        .background(.thinMaterial)
+                        .cornerRadius(20)
+                        .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                        
+                        
+                        Spacer()
+                    }
+                    .foregroundColor(.secondary)
+                }
+                .transition(.opacity)
+            }
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(LocationViewModel())
     }
 }
 

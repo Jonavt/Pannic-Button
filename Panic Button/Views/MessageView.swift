@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct MessageView: View {
-    @State var text = "Mensaje"
+    @AppStorage("emergencyMessage") var text = ""
     @FocusState private var messageIsFocused: Bool
     @Environment(\.dismiss) var dismiss
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var countdown = 59
     
+    @Binding var showSuccess: Bool
+    @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
+
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 25) {
@@ -59,8 +62,8 @@ struct MessageView: View {
                         .font(.headline)
                     
                     HStack(alignment: .center, spacing: 15) {
-                        ForEach(1...4, id: \.self) { _ in
-                            PersonItem(image: "persona", name: "Antonio Gómez")
+                        ForEach(savedContacts) { contact in
+                            PersonItem(firstName: contact.firstName ?? "", lastName: contact.lastName ?? "")
                         }
                     }
 
@@ -103,7 +106,15 @@ struct MessageView: View {
                     
                     
                     Button {
-                        
+                        dismiss()
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
+                            showSuccess = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
+                                    showSuccess = false
+                                }
+                            }
+                        }
                     } label: {
                         HStack(alignment: .center, spacing: 0) {
                             Spacer(minLength: 0)
@@ -137,8 +148,14 @@ struct MessageView: View {
             }
             
             if countdown == 0 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    dismiss()
+                dismiss()
+                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
+                    showSuccess = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
+                            showSuccess = false
+                        }
+                    }
                 }
             }
         }
@@ -148,6 +165,6 @@ struct MessageView: View {
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView()
+        MessageView(showSuccess: .constant(false))
     }
 }

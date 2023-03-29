@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State var username: String = ""
-    @State var lastName: String = ""
-    @State var age: String = ""
+    @AppStorage("name") var username: String = ""
+    @AppStorage("lastName") var lastName: String = ""
+    @AppStorage("age") var age: String = ""
     
     @State var showMessage = false
     @FocusState private var messageIsFocused: Bool
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             
@@ -28,13 +28,14 @@ struct RegisterView: View {
                 .padding(.horizontal, 20)
                 .frame(height: 300)
             
-
+            
             CustomField(searchText: $username, text: "Nombre")
                 .focused($messageIsFocused)
             CustomField(searchText: $lastName, text: "Apellidos")
                 .focused($messageIsFocused)
             CustomField(searchText: $age, text: "Edad")
                 .focused($messageIsFocused)
+                .keyboardType(.numberPad)
             
             
             Spacer()
@@ -51,6 +52,9 @@ struct RegisterView: View {
             .tint(.blue)
             .cornerRadius(15)
             .controlSize(.large)
+//            .opacity(isComplete() ? 1 : 0.4)
+            .disabled(!isComplete())
+            
         }
         .padding()
         .navigationDestination(isPresented: $showMessage) {
@@ -60,10 +64,34 @@ struct RegisterView: View {
             messageIsFocused = false
         }
     }
-    struct RegisterView_Previews: PreviewProvider {
-        static var previews: some View {
-            RegisterView()
-        }
-    }
     
+    func isComplete() -> Bool {
+        var complete = false
+        if !username.isEmpty && !lastName.isEmpty && (!age.isEmpty && age.isNumber) {
+            complete = true
+        }
+        
+        if let age = Int(age) {
+            print(age)
+            if age < 0 || age > 110 {
+                complete = false
+            }
+        }
+        
+        return complete
+    }
+}
+
+struct RegisterView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView()
+    }
+}
+
+extension String {
+    var isNumber: Bool {
+        return self.range(
+            of: "^[0-9]*$", // 1
+            options: .regularExpression) != nil
+    }
 }

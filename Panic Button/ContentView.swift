@@ -24,9 +24,9 @@ struct ContentView: View {
                 }
             }
         }
-        .onAppear {
-            hasCompletedOnboarding = false
-        }
+//        .onAppear {
+//            hasCompletedOnboarding = false
+//        }
     }
     
 }

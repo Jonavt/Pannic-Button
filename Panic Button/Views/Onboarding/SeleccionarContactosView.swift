@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SeleccionarContactosView: View {
     @State private var searchText: String = ""
     @FocusState private var messageIsFocused: Bool
 
     @AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding = false
+    @EnvironmentObject var conVM: ContactsViewModel
+    @Environment(\.managedObjectContext) var moc
     
+    @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
+
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 20) {
@@ -20,6 +25,9 @@ struct SeleccionarContactosView: View {
                 Text("Contactos de emergencia")
                     .font(.largeTitle.weight(.heavy))
                 
+                Text("Selecciona un mínimo de 3 contactos")
+                    .font(.body)
+                    .foregroundColor(.secondary)
                 
                 CustomField(searchText: $searchText, image: "magnifyingglass", text: "Busca tus contactos")
                     //.padding(.horizontal)
@@ -27,23 +35,26 @@ struct SeleccionarContactosView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 20) {
-                        ForEach((1...5), id: \.self){ item in
-                            HStack{
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .foregroundColor(.gray)
-                                    .frame(width: 35, height: 35)
-                                
-                                Text("Nombre")
-                                    .cornerRadius(25)
-                                
-                                Spacer()
+                        ForEach (conVM.contacts.filter({ (cont) -> Bool in
+                            self.searchText.isEmpty ? true :
+                            "\(cont)".lowercased().contains(self.searchText.lowercased())
+                        })) { contact in
+                            Button {
+                                if !savedContacts.contains(where: { contact.phoneNumber?.stringValue == $0.phoneNumber}) {
+                                    let newContact = Contact(context: moc)
+                                    newContact.firstName = contact.firstName
+                                    newContact.lastName = contact.lastName
+                                    newContact.phoneNumber = contact.phoneNumber?.stringValue
+                                    try? moc.save()
+                                } else {
+                                    if let oldContact = savedContacts.first(where: { $0.phoneNumber == contact.phoneNumber?.stringValue}) {
+                                        moc.delete(oldContact)
+                                    }
+                                }
+                            } label: {
+                                ContactRow(contact: contact)
                             }
-                            .padding()
-                            .background(.gray.opacity(0.2))
-                            .cornerRadius(15)
-                            //Spacer()
-                            
+                            .foregroundColor(.primary)
                         }
                     }
                     .padding(.top, 10)
@@ -59,7 +70,7 @@ struct SeleccionarContactosView: View {
                 } label: {
                     HStack {
                         Spacer()
-                        Text("Aceptar")
+                        Text("Entrar")
                         Spacer()
                     }
                 }
@@ -68,7 +79,8 @@ struct SeleccionarContactosView: View {
                 .foregroundColor(.white)
                 .background(Color.blue.opacity(0.9))
                 .cornerRadius(15)
-
+                .allowsHitTesting(savedContacts.count >= 3 ? true : false)
+                .opacity(savedContacts.count >= 3 ? 1 : 0.5)
             }
             .padding()
         }
@@ -77,13 +89,19 @@ struct SeleccionarContactosView: View {
         .onTapGesture {
             messageIsFocused = false
         }
+        .onAppear {
+            conVM.contacts = conVM.fetchingContacts()
+        }
     }
 }
 
 struct SeleccionarContactosView_Previews: PreviewProvider {
     static var previews: some View {
         SeleccionarContactosView()
+            .environmentObject(LocationViewModel())
+            .environmentObject(ContactsViewModel())
     }
 }
+
 
 

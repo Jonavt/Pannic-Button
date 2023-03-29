@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DefineMessageView: View {
-    @State var text = ""
+    @AppStorage("emergencyMessage") var text = ""
     @FocusState private var messageIsFocused: Bool
 
     @Environment(\.dismiss) var dismiss
@@ -85,7 +85,7 @@ struct DefineMessageView: View {
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(15)
                 .accentColor(.blue)
-
+                .disabled(text.isEmpty)
             }
         }
         .padding()
