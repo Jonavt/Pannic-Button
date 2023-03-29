@@ -25,7 +25,7 @@ struct PersonItem: View {
                     .frame(width: 70, height: 70)
             }
 
-            Text("\(firstName) \(lastName)")
+            Text("\(firstName)\n\(lastName)")
                 .font(.footnote)
                 .multilineTextAlignment(.center)
                 .lineLimit(2, reservesSpace: true)

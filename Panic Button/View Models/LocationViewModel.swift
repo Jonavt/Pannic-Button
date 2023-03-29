@@ -16,8 +16,8 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 19.0549,
                                        longitude: -98.2845),
-        latitudinalMeters: 750,
-        longitudinalMeters: 750
+        latitudinalMeters: 300,
+        longitudinalMeters: 300
     )
     
     
@@ -32,6 +32,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        locationManager.distanceFilter = .greatestFiniteMagnitude
     }
     
     func requestPermission() {
@@ -45,18 +46,17 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        Task { @MainActor in
+//        Task { @MainActor in
             lastSeenLocation = locations.last
-            fetchCountryAndCity(for: locations.first)
-        }
+//        }
     }
 
-    func fetchCountryAndCity(for location: CLLocation?) {
-        guard let location = location else { return }
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            self.currentPlacemark = placemarks?.first
-        }
-    }
+//    func fetchCountryAndCity(for location: CLLocation?) {
+//        guard let location = location else { return }
+//        let geocoder = CLGeocoder()
+//        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//            self.currentPlacemark = placemarks?.first
+//        }
+//    }
 
 }

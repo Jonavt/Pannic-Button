@@ -23,7 +23,8 @@ struct MessageView: View {
             VStack(alignment: .leading, spacing: 25) {
                 Text("Mensaje")
                     .font(.largeTitle.weight(.heavy))
-                
+                    .padding([.horizontal, .top])
+
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Mensaje a enviar")
                         .font(.headline)
@@ -38,7 +39,8 @@ struct MessageView: View {
                         .focused($messageIsFocused)
 
                 }
-                
+                .padding(.horizontal)
+
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Ubicación")
                         .font(.headline)
@@ -56,15 +58,20 @@ struct MessageView: View {
                     .cornerRadius(15)
 
                 }
-                
-                VStack(alignment: .leading, spacing: 10) {
+                .padding(.horizontal)
+
+                VStack(alignment: .leading, spacing: 15) {
                     Text("Contactos")
                         .font(.headline)
-                    
-                    HStack(alignment: .center, spacing: 15) {
-                        ForEach(savedContacts) { contact in
-                            PersonItem(firstName: contact.firstName ?? "", lastName: contact.lastName ?? "")
+                        .padding(.horizontal)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(alignment: .center, spacing: 15) {
+                            ForEach(savedContacts) { contact in
+                                PersonItem(firstName: contact.firstName ?? "", lastName: contact.lastName ?? "")
+                            }
                         }
+                        .padding(.horizontal)
                     }
 
                 }
@@ -85,6 +92,7 @@ struct MessageView: View {
                 .background(.blue)
                 .cornerRadius(15)
                 .foregroundColor(.white)
+                .padding(.horizontal)
 
                 HStack(alignment: .center, spacing: 15) {
                     Button {
@@ -134,8 +142,8 @@ struct MessageView: View {
                     .accentColor(.primary)
 
                 }
+                .padding([.horizontal, .bottom])
             }
-            .padding()
             .onTapGesture {
                 messageIsFocused = false
             }

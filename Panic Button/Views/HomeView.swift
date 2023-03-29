@@ -25,7 +25,8 @@ struct HomeView: View {
     
     @State var showSuccess = false
     @AppStorage("name") var username: String = ""
-
+    @State var userTrackingMode: MapUserTrackingMode = .follow
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 25) {
@@ -48,7 +49,7 @@ struct HomeView: View {
                 
                 if let location = locVM.locationManager.location {
                     
-                    Map(coordinateRegion: $locVM.region,
+                    Map(coordinateRegion: $locVM.region, showsUserLocation: false, userTrackingMode: $userTrackingMode,
                         annotationItems: [place])
                     { place in
                         MapMarker(coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
@@ -61,8 +62,8 @@ struct HomeView: View {
                                 locVM.region = MKCoordinateRegion(
                                     center: CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                                                    longitude: location.coordinate.longitude),
-                                    latitudinalMeters: 750,
-                                    longitudinalMeters: 750
+                                    latitudinalMeters: 300,
+                                    longitudinalMeters: 300
                                 )
                             }
                         }, label: {
@@ -185,13 +186,13 @@ struct HomeView: View {
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .onAppear(perform: {
-            Task { @MainActor in
+            DispatchQueue.main.async {
                 if let location = locVM.locationManager.location {
                     locVM.region = MKCoordinateRegion(
                         center: CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                                        longitude: location.coordinate.longitude),
-                        latitudinalMeters: 750,
-                        longitudinalMeters: 750
+                        latitudinalMeters: 300,
+                        longitudinalMeters: 300
                     )
                 }
             }
