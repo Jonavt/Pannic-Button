@@ -21,6 +21,9 @@ struct MessageView: View {
     @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
     @EnvironmentObject var locVM: LocationViewModel
 
+    @AppStorage("name") var username: String = ""
+    @AppStorage("lastName") var lastName: String = ""
+
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 25) {
@@ -129,14 +132,27 @@ struct MessageView: View {
                     
                     
                     Button {
-                        dismiss()
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
-                            showSuccess = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
-                                    showSuccess = false
-                                }
-                            }
+                        guard let address = locVM.currentPlacemark?.postalAddress else { return }
+                        guard let locationName = locVM.currentPlacemark?.name else { return }
+                        let urlWhats = "whatsapp://send?text=\(text)\n\nMi última ubicación es:\n\(locationName)\n\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)"
+                        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+                              if let whatsappURL = NSURL(string: urlString) {
+                                    if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+                                         UIApplication.shared.open(whatsappURL as URL)
+                                        dismiss()
+                                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
+                                            showSuccess = true
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
+                                                    showSuccess = false
+                                                }
+                                            }
+                                        }
+                                     }
+                                     else {
+                                         print("please install watsapp")
+                                     }
+                              }
                         }
                     } label: {
                         HStack(alignment: .center, spacing: 0) {

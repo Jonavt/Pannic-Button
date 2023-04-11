@@ -33,6 +33,7 @@ struct HomeView: View {
                 HStack {
                     Text("Hola, **\(username)**")
                         .font(.largeTitle)
+                        
                     
                     Spacer()
                     
