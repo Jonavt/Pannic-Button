@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreLocation
+import MapKit
 
 struct MessageView: View {
     @AppStorage("emergencyMessage") var text = ""
@@ -17,6 +19,7 @@ struct MessageView: View {
     
     @Binding var showSuccess: Bool
     @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
+    @EnvironmentObject var locVM: LocationViewModel
 
     var body: some View {
         GeometryReader { geo in
@@ -49,7 +52,19 @@ struct MessageView: View {
                     HStack(alignment: .center, spacing: 10) {
                         Image(systemName: "mappin.and.ellipse")
                         
-                        Text("Universidad de las Américas Puebla")
+                        if let location = locVM.currentPlacemark {
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text("\(location.name ?? "")")
+                                if let address = location.postalAddress {
+                                    Text("\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)")
+                                        .font(.footnote)
+                                        .foregroundColor(.secondary)
+                                }
+                                    
+                            }
+                        } else {
+                            Text("Sin dirección")
+                        }
                         
                         Spacer()
                     }
@@ -135,6 +150,7 @@ struct MessageView: View {
                             Spacer(minLength: 0)
                         }
                         .foregroundColor(Color("InvertedText"))
+                        .fixedSize(horizontal: true, vertical: false)
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
@@ -168,6 +184,9 @@ struct MessageView: View {
             }
         }
         .background(Color("Background1").ignoresSafeArea())
+        .onAppear {
+            locVM.fetchAddress(for: locVM.locationManager.location)
+        }
     }
 }
 

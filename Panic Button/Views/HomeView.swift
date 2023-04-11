@@ -166,6 +166,7 @@ struct HomeView: View {
                             Spacer(minLength: 0)
                         }
                         .foregroundColor(Color("InvertedText"))
+                        .fixedSize(horizontal: true, vertical: false)
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)

@@ -45,18 +45,15 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-//        Task { @MainActor in
-            lastSeenLocation = locations.last
-//        }
+        lastSeenLocation = locations.last
     }
 
-//    func fetchCountryAndCity(for location: CLLocation?) {
-//        guard let location = location else { return }
-//        let geocoder = CLGeocoder()
-//        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-//            self.currentPlacemark = placemarks?.first
-//        }
-//    }
+    func fetchAddress(for location: CLLocation?) {
+        guard let location = location else { return }
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            self.currentPlacemark = placemarks?.first
+        }
+    }
 
 }

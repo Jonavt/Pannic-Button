@@ -9,5 +9,4 @@ import SwiftUI
 
 class NavigationViewModel: ObservableObject {
     @Published var hasCompletedOnboarding = false
-    
 }

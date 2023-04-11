@@ -10,9 +10,13 @@ import SwiftUI
 struct ContactRow: View {
     var contact: ContactInfo
     @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
+
     var body: some View {
         HStack(alignment: .center, spacing: 15) {
-            if let first = contact.firstName, let second = contact.lastName {
+            let first = contact.firstName
+            let second = contact.lastName
+            
+            if first != "" && second != "" {
                 Text("\(String(first.prefix(1)))\(String(second.prefix(1)))")
                     .frame(width: 40, height: 40, alignment: .center)
                     .background(Color.secondary.opacity(0.7))
@@ -26,7 +30,7 @@ struct ContactRow: View {
             
             VStack(alignment: .leading, spacing: 5) {
                 Text("\(contact.firstName) \(contact.lastName)")
-                
+
                 Text("\(contact.phoneNumber?.stringValue ?? "")")
                     .font(.footnote)
                     .foregroundColor(.secondary)
@@ -43,7 +47,7 @@ struct ContactRow: View {
         }
         .padding(.horizontal, 10)
         .padding(.vertical)
-        .background(.secondary.opacity(0.5))
+        .background(.ultraThinMaterial)
         .cornerRadius(20)
         .overlay {
             ZStack {

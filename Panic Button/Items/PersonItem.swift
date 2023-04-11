@@ -13,7 +13,10 @@ struct PersonItem: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            if let first = firstName, let second = lastName {
+            let first = firstName
+            let second = lastName
+            
+            if first != "" && second != "" {
                 Text("\(String(first.prefix(1)))\(String(second.prefix(1)))")
                     .frame(width: 70, height: 70, alignment: .center)
                     .background(Color.secondary.opacity(0.7))
