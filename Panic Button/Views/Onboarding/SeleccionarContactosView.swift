@@ -22,10 +22,10 @@ struct SeleccionarContactosView: View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 20) {
                 
-                Text("Contactos de emergencia")
+                Text("Contacto de emergencia")
                     .font(.largeTitle.weight(.heavy))
                 
-                Text("Selecciona un mínimo de 3 contactos")
+                Text("Selecciona tu contacto de emergencia")
                     .font(.body)
                     .foregroundColor(.secondary)
                 
@@ -40,7 +40,18 @@ struct SeleccionarContactosView: View {
                             "\(cont)".lowercased().contains(self.searchText.lowercased())
                         })) { contact in
                             Button {
-                                if !savedContacts.contains(where: { contact.phoneNumber?.stringValue == $0.phoneNumber}) {
+//                                if !savedContacts.contains(where: { contact.phoneNumber?.stringValue == $0.phoneNumber}) {
+//                                    let newContact = Contact(context: moc)
+//                                    newContact.firstName = contact.firstName
+//                                    newContact.lastName = contact.lastName
+//                                    newContact.phoneNumber = contact.phoneNumber?.stringValue
+//                                    try? moc.save()
+//                                } else {
+//                                    if let oldContact = savedContacts.first(where: { $0.phoneNumber == contact.phoneNumber?.stringValue}) {
+//                                        moc.delete(oldContact)
+//                                    }
+//                                }
+                                if savedContacts.count == 0 {
                                     let newContact = Contact(context: moc)
                                     newContact.firstName = contact.firstName
                                     newContact.lastName = contact.lastName
@@ -60,7 +71,10 @@ struct SeleccionarContactosView: View {
                     .padding(.top, 10)
 
                 }
-                
+                .onTapGesture {
+                    messageIsFocused = false
+                }
+
 //                Spacer()
                 
                 Button {
@@ -79,8 +93,8 @@ struct SeleccionarContactosView: View {
                 .foregroundColor(.white)
                 .background(Color.blue.opacity(0.9))
                 .cornerRadius(15)
-                .allowsHitTesting(savedContacts.count >= 3 ? true : false)
-                .opacity(savedContacts.count >= 3 ? 1 : 0.5)
+                .allowsHitTesting(savedContacts.count == 1 ? true : false)
+                .opacity(savedContacts.count == 1 ? 1 : 0.5)
             }
             .padding()
         }

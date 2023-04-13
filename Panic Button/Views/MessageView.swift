@@ -79,16 +79,50 @@ struct MessageView: View {
                 .padding(.horizontal)
 
                 VStack(alignment: .leading, spacing: 15) {
-                    Text("Contactos")
+                    Text("Contacto de emergencia")
                         .font(.headline)
                         .padding(.horizontal)
 
-                    ScrollView(.horizontal, showsIndicators: false) {
+//                    ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .center, spacing: 15) {
                             ForEach(savedContacts) { contact in
-                                PersonItem(firstName: contact.firstName ?? "", lastName: contact.lastName ?? "")
+                                HStack {
+                                    Image(systemName: "person.fill")
+                                        .font(.system(size: 30))
+                                    
+                                    VStack(alignment: .leading) {
+                                        Spacer()
+
+                                        Text("\(contact.firstName ?? "") \(contact.lastName ?? "")")
+                                            .font(.title3.weight(.bold))
+                                            .foregroundColor(.primary)
+                                        
+                                        Text("\(contact.phoneNumber ?? "")")
+                                            .font(.headline)
+                                            .foregroundColor(.secondary)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Button {
+                                        
+                                    } label: {
+                                        Label("Cambiar", systemImage: "gear")
+                                    }
+                                    .tint(.primary)
+                                    .controlSize(.regular)
+                                    .buttonStyle(.borderedProminent)
+                                    .cornerRadius(15)
+                                    .foregroundColor(Color("InvertedText"))
+
+                                }
+                                .padding(10)
+                                .background(LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .cornerRadius(15)
                             }
-                        }
+//                        }
                         .padding(.horizontal)
                     }
 
@@ -132,28 +166,8 @@ struct MessageView: View {
                     
                     
                     Button {
-                        guard let address = locVM.currentPlacemark?.postalAddress else { return }
-                        guard let locationName = locVM.currentPlacemark?.name else { return }
-                        let urlWhats = "whatsapp://send?text=\(text)\n\nMi última ubicación es:\n\(locationName)\n\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)"
-                        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
-                              if let whatsappURL = NSURL(string: urlString) {
-                                    if UIApplication.shared.canOpenURL(whatsappURL as URL) {
-                                         UIApplication.shared.open(whatsappURL as URL)
-                                        dismiss()
-                                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
-                                            showSuccess = true
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
-                                                    showSuccess = false
-                                                }
-                                            }
-                                        }
-                                     }
-                                     else {
-                                         print("please install watsapp")
-                                     }
-                              }
-                        }
+                        print(savedContacts.first?.phoneNumber!)
+                        sendMessage(phoneNumber: (savedContacts.first?.phoneNumber!)!)
                     } label: {
                         HStack(alignment: .center, spacing: 0) {
                             Spacer(minLength: 0)
@@ -204,10 +218,41 @@ struct MessageView: View {
             locVM.fetchAddress(for: locVM.locationManager.location)
         }
     }
+    
+    func sendMessage(phoneNumber: String) {
+        guard let address = locVM.currentPlacemark?.postalAddress else { return }
+        guard let locationName = locVM.currentPlacemark?.name else { return }
+        let phone = phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines)
+        let index = phone.index(phone.endIndex, offsetBy: -12)
+        let finalPhone = phone.suffix(from: index).replacingOccurrences(of: " ", with: "")
+        print(finalPhone)
+//                        let urlWhats = "whatsapp://send?text=\(text)\n\nMi última ubicación es:\n\(locationName)\n\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)"
+        let urlWhats = "https://wa.me/\(finalPhone)?text=\(text)\n\nMi última ubicación es:\n\(locationName)\n\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)"
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+              if let whatsappURL = NSURL(string: urlString) {
+                    if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+                         UIApplication.shared.open(whatsappURL as URL)
+                        dismiss()
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
+                            showSuccess = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
+                                    showSuccess = false
+                                }
+                            }
+                        }
+                     }
+                     else {
+                         print("please install watsapp")
+                     }
+              }
+        }
+    }
 }
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
         MessageView(showSuccess: .constant(false))
+            .environmentObject(LocationViewModel())
     }
 }
