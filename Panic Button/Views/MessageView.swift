@@ -107,6 +107,7 @@ struct MessageView: View {
                                 Spacer()
                                 
                                 Button {
+                                    buttonVibration()
                                     showContacts = true
                                 } label: {
                                     Label("Cambiar", systemImage: "gear")
@@ -149,6 +150,7 @@ struct MessageView: View {
                 
                 HStack(alignment: .center, spacing: 15) {
                     Button {
+                        buttonVibration()
                         dismiss()
                     } label: {
                         HStack(alignment: .center, spacing: 0) {
@@ -167,6 +169,7 @@ struct MessageView: View {
                     
                     
                     Button {
+                        successVibration()
                         sendMessage(phoneNumber: (savedContacts.first?.phoneNumber!)!)
                     } label: {
                         HStack(alignment: .center, spacing: 0) {
@@ -202,6 +205,7 @@ struct MessageView: View {
             }
             
             if countdown == 0 {
+                successVibration()
                 sendMessage(phoneNumber: (savedContacts.first?.phoneNumber!)!)
                 dismiss()
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {

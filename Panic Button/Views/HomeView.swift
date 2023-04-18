@@ -59,6 +59,7 @@ struct HomeView: View {
                     .frame(minHeight: 400)
                     .overlay(
                         Button(action: {
+                            buttonVibration()
                             withAnimation(.spring(response: 0.6, dampingFraction: 0.5, blendDuration: 0)) {
                                 locVM.region = MKCoordinateRegion(
                                     center: CLLocationCoordinate2D(latitude: location.coordinate.latitude,
@@ -95,7 +96,7 @@ struct HomeView: View {
                 //            Spacer()
                 
                 Button {
-                    
+                    buttonVibration()
                 } label: {
                     HStack {
                         Spacer()
@@ -135,6 +136,7 @@ struct HomeView: View {
                 
                 HStack(alignment: .center, spacing: 15) {
                     Button {
+                        buttonVibration()
                         showEmergency = true
                     } label: {
                         HStack(alignment: .center, spacing: 0) {
@@ -154,6 +156,7 @@ struct HomeView: View {
                     .accentColor(.secondary)
                     
                     Button {
+                        buttonVibration()
                         showMessage = true
                     } label: {
                         HStack(alignment: .center, spacing: 0) {

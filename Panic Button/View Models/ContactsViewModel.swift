@@ -44,6 +44,7 @@ class ContactsViewModel: ObservableObject {
         case .authorized:
             self.getContacts()
             self.hasAccess = true
+            successVibration()
         case .denied:
             store.requestAccess(for: .contacts) { granted, error in
                 if granted {

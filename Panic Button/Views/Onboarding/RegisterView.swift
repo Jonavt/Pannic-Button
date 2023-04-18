@@ -40,6 +40,7 @@ struct RegisterView: View {
             
             Spacer()
             Button {
+                buttonVibration()
                 showMessage = true
             } label: {
                 HStack {

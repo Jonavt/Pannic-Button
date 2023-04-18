@@ -59,6 +59,7 @@ struct SeleccionarContactosView: View {
                                     newContact.lastName = contact.lastName
                                     newContact.phoneNumber = contact.phoneNumber?.stringValue
                                     try? moc.save()
+                                    buttonVibration()
                                 } else {
                                     if let oldContact = savedContacts.first {
                                         moc.delete(oldContact)
@@ -69,6 +70,7 @@ struct SeleccionarContactosView: View {
                                     newContact.lastName = contact.lastName
                                     newContact.phoneNumber = contact.phoneNumber?.stringValue
                                     try? moc.save()
+                                    buttonVibration()
                                 }
                             } label: {
                                 ContactRow(contact: contact)
@@ -86,6 +88,7 @@ struct SeleccionarContactosView: View {
 //                Spacer()
                 
                 Button {
+                    buttonVibration()
                     withAnimation(.spring(response: 0.8, dampingFraction: 0.7, blendDuration: 3)) {
                         hasCompletedOnboarding = true
                     }

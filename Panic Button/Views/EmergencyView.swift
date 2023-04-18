@@ -36,6 +36,7 @@ struct EmergencyView: View {
             HStack(alignment: .center, spacing: 15) {
                 Button {
                     dismiss()
+                    buttonVibration()
                 } label: {
                     HStack(alignment: .center, spacing: 0) {
                         Spacer(minLength: 0)
@@ -53,6 +54,7 @@ struct EmergencyView: View {
                 
                 
                 Button {
+                    buttonVibration()
                     let tel = "tel://"
                     let formattedString = tel + emergencyNumber
                     guard let url = URL(string: formattedString) else { return }
@@ -92,7 +94,8 @@ struct EmergencyView: View {
                 let formattedString = tel + emergencyNumber
                 guard let url = URL(string: formattedString) else { return }
                 UIApplication.shared.open(url)
-
+                successVibration()
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     dismiss()
                 }

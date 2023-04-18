@@ -19,3 +19,13 @@ class DataController: ObservableObject {
         }
     }
 }
+
+func buttonVibration(intensity: CGFloat = 0.7) {
+    let generator = UIImpactFeedbackGenerator()
+    generator.impactOccurred(intensity: intensity)
+}
+
+func successVibration() {
+    let generator = UINotificationFeedbackGenerator()
+    generator.notificationOccurred(.success)
+}

@@ -37,6 +37,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func requestPermission() {
         locationManager.requestWhenInUseAuthorization()
+        successVibration()
 //        locationManager.requestLocation()
     }
 

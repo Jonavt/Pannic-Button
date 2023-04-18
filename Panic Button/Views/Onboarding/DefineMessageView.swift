@@ -52,6 +52,7 @@ struct DefineMessageView: View {
             Spacer()
             HStack(alignment: .center, spacing: 15) {
                 Button {
+                    buttonVibration()
                     dismiss()
                 } label: {
                     HStack(alignment: .center, spacing: 0) {
@@ -70,6 +71,7 @@ struct DefineMessageView: View {
                 
                 
                 Button {
+                    buttonVibration()
                     showPermissions = true
                 } label: {
                     HStack(alignment: .center, spacing: 0) {
