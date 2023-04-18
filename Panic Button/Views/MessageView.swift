@@ -20,21 +20,22 @@ struct MessageView: View {
     @Binding var showSuccess: Bool
     @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
     @EnvironmentObject var locVM: LocationViewModel
-
+    
     @AppStorage("name") var username: String = ""
     @AppStorage("lastName") var lastName: String = ""
-
+    @State var showContacts = false
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 25) {
                 Text("Mensaje")
                     .font(.largeTitle.weight(.heavy))
                     .padding([.horizontal, .top])
-
+                
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Mensaje a enviar")
                         .font(.headline)
-            
+                    
                     TextEditor(text: $text)
                         .frame(height: 150)
                         .padding(10)
@@ -43,10 +44,10 @@ struct MessageView: View {
                         .cornerRadius(15)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                         .focused($messageIsFocused)
-
+                    
                 }
                 .padding(.horizontal)
-
+                
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Ubicación")
                         .font(.headline)
@@ -63,7 +64,7 @@ struct MessageView: View {
                                         .font(.footnote)
                                         .foregroundColor(.secondary)
                                 }
-                                    
+                                
                             }
                         } else {
                             Text("Sin dirección")
@@ -74,58 +75,58 @@ struct MessageView: View {
                     .padding(10)
                     .background(.secondary.opacity(0.2))
                     .cornerRadius(15)
-
+                    
                 }
                 .padding(.horizontal)
-
+                
                 VStack(alignment: .leading, spacing: 15) {
                     Text("Contacto de emergencia")
                         .font(.headline)
                         .padding(.horizontal)
-
-//                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .center, spacing: 15) {
-                            ForEach(savedContacts) { contact in
-                                HStack {
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 30))
-                                    
-                                    VStack(alignment: .leading) {
-                                        Spacer()
-
-                                        Text("\(contact.firstName ?? "") \(contact.lastName ?? "")")
-                                            .font(.title3.weight(.bold))
-                                            .foregroundColor(.primary)
-                                        
-                                        Text("\(contact.phoneNumber ?? "")")
-                                            .font(.headline)
-                                            .foregroundColor(.secondary)
-                                        
-                                        Spacer()
-                                    }
-                                    
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        ForEach(savedContacts) { contact in
+                            HStack {
+                                Image(systemName: "person.fill")
+                                    .font(.system(size: 30))
+                                
+                                VStack(alignment: .leading) {
                                     Spacer()
                                     
-                                    Button {
-                                        
-                                    } label: {
-                                        Label("Cambiar", systemImage: "gear")
-                                    }
-                                    .tint(.primary)
-                                    .controlSize(.regular)
-                                    .buttonStyle(.borderedProminent)
-                                    .cornerRadius(15)
-                                    .foregroundColor(Color("InvertedText"))
-
+                                    Text("\(contact.firstName ?? "") \(contact.lastName ?? "")")
+                                        .font(.title3.weight(.bold))
+                                        .foregroundColor(.primary)
+                                    
+                                    Text("\(contact.phoneNumber ?? "")")
+                                        .font(.headline)
+                                        .foregroundColor(.secondary)
+                                    
+                                    Spacer()
                                 }
-                                .padding(10)
-                                .background(LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                
+                                Spacer()
+                                
+                                Button {
+                                    showContacts = true
+                                } label: {
+                                    Label("Cambiar", systemImage: "gear")
+                                }
+                                .tint(.primary)
+                                .controlSize(.regular)
+                                .buttonStyle(.borderedProminent)
                                 .cornerRadius(15)
+                                .foregroundColor(Color("InvertedText"))
+                                
                             }
-//                        }
+                            .padding(10)
+                            .background(LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing))
+                            .cornerRadius(15)
+                        }
                         .padding(.horizontal)
                     }
-
+                    .sheet(isPresented: $showContacts) {
+                        
+                    }
                 }
                 
                 Spacer()
@@ -137,7 +138,7 @@ struct MessageView: View {
                     
                     Text("\(countdown)")
                         .font(.largeTitle.weight(.heavy))
-
+                    
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 120)
@@ -145,7 +146,7 @@ struct MessageView: View {
                 .cornerRadius(15)
                 .foregroundColor(.white)
                 .padding(.horizontal)
-
+                
                 HStack(alignment: .center, spacing: 15) {
                     Button {
                         dismiss()
@@ -155,7 +156,7 @@ struct MessageView: View {
                             
                             
                             Text("Cancelar")
-                
+                            
                             Spacer(minLength: 0)
                         }
                     }
@@ -166,7 +167,6 @@ struct MessageView: View {
                     
                     
                     Button {
-                        print(savedContacts.first?.phoneNumber!)
                         sendMessage(phoneNumber: (savedContacts.first?.phoneNumber!)!)
                     } label: {
                         HStack(alignment: .center, spacing: 0) {
@@ -186,14 +186,14 @@ struct MessageView: View {
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
                     .accentColor(.primary)
-
+                    
                 }
                 .padding([.horizontal, .bottom])
             }
             .onTapGesture {
                 messageIsFocused = false
             }
-
+            
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .onReceive(timer) { time in
@@ -226,26 +226,26 @@ struct MessageView: View {
         let index = phone.index(phone.endIndex, offsetBy: -12)
         let finalPhone = phone.suffix(from: index).replacingOccurrences(of: " ", with: "")
         print(finalPhone)
-//                        let urlWhats = "whatsapp://send?text=\(text)\n\nMi última ubicación es:\n\(locationName)\n\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)"
+        //                        let urlWhats = "whatsapp://send?text=\(text)\n\nMi última ubicación es:\n\(locationName)\n\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)"
         let urlWhats = "https://wa.me/\(finalPhone)?text=\(text)\n\nMi última ubicación es:\n\(locationName)\n\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
-              if let whatsappURL = NSURL(string: urlString) {
-                    if UIApplication.shared.canOpenURL(whatsappURL as URL) {
-                         UIApplication.shared.open(whatsappURL as URL)
-                        dismiss()
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
-                            showSuccess = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
-                                    showSuccess = false
-                                }
+            if let whatsappURL = NSURL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+                    UIApplication.shared.open(whatsappURL as URL)
+                    dismiss()
+                    withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
+                        showSuccess = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
+                                showSuccess = false
                             }
                         }
-                     }
-                     else {
-                         print("please install watsapp")
-                     }
-              }
+                    }
+                }
+                else {
+                    print("please install watsapp")
+                }
+            }
         }
     }
 }

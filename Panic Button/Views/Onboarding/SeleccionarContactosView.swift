@@ -17,7 +17,7 @@ struct SeleccionarContactosView: View {
     @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
-
+    var isChanging: Bool
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 20) {
@@ -81,6 +81,10 @@ struct SeleccionarContactosView: View {
                     withAnimation(.spring(response: 0.8, dampingFraction: 0.7, blendDuration: 3)) {
                         hasCompletedOnboarding = true
                     }
+                    
+                    if isChanging {
+                        
+                    }
                 } label: {
                     HStack {
                         Spacer()
@@ -111,7 +115,7 @@ struct SeleccionarContactosView: View {
 
 struct SeleccionarContactosView_Previews: PreviewProvider {
     static var previews: some View {
-        SeleccionarContactosView()
+        SeleccionarContactosView(isChanging: true)
             .environmentObject(LocationViewModel())
             .environmentObject(ContactsViewModel())
     }
