@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import AVFoundation
 
 struct HomeView: View {
     @State private var region = MKCoordinateRegion(
@@ -26,7 +27,8 @@ struct HomeView: View {
     @State var showSuccess = false
     @AppStorage("name") var username: String = ""
     @State var userTrackingMode: MapUserTrackingMode = .follow
-    
+    @State private var isButtonPressed = false
+
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 25) {
@@ -96,13 +98,21 @@ struct HomeView: View {
                 //            Spacer()
                 
                 Button {
+                    if isButtonPressed {
+                        stopSound()
+                    }
+                    else{
+                    self.sound()
+                    }
+                    isButtonPressed.toggle()
+                    
                     buttonVibration()
                 } label: {
                     HStack {
                         Spacer()
                         VStack(alignment: .center, spacing: 10) {
                             Image(systemName: "speaker.wave.3.fill")
-                            Text("Botón de \nPánico")
+                            Text(isButtonPressed ? "Detener alarma" : "Alarma")
                                 .font(.body)
                                 .lineLimit(nil)
                         }
@@ -232,6 +242,27 @@ struct HomeView: View {
                 .transition(.opacity)
             }
         }
+    }
+    
+    func sound(){
+        let url = Bundle.main.url(forResource: "K44XEWK-alarm-fire-alarm-buzzer-01", withExtension: "mp3")
+        // NOTHING IF URL IS EMPTY
+        guard url != nil else{
+            return
+        }
+        
+        do{
+            player = try AVAudioPlayer(contentsOf: url!)
+            player.numberOfLoops = -1
+            player?.play()
+        } catch{
+            print("error")
+        }
+        
+    }
+    
+    func stopSound(){
+        player.pause()
     }
 }
 

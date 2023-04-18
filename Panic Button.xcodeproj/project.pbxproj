@@ -13,6 +13,7 @@
 		A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1229B7FE3F00BE3E5C /* ContentView.swift */; };
 		A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1429B7FE4000BE3E5C /* Assets.xcassets */; };
 		A897CE1829B7FE4000BE3E5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */; };
+		A8EAC66629EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8EAC66529EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 */; };
 		A8EFB40B29BAA54E00B5C742 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */; };
 		CA4F35D329D3A96C00C66AC8 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */; };
 		CA5FD2D329CA678F00E87463 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FD2D229CA678F00E87463 /* CustomField.swift */; };
@@ -36,6 +37,7 @@
 		A897CE1229B7FE3F00BE3E5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A897CE1429B7FE4000BE3E5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A8EAC66529EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "K44XEWK-alarm-fire-alarm-buzzer-01.mp3"; sourceTree = "<group>"; };
 		A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		CA4F35D429D3ABED00C66AC8 /* Panic-Button-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Panic-Button-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -82,6 +84,7 @@
 		A897CE0F29B7FE3F00BE3E5C /* Panic Button */ = {
 			isa = PBXGroup;
 			children = (
+				A8EAC66729EF60860035E706 /* Files */,
 				CA4F35D429D3ABED00C66AC8 /* Panic-Button-Info.plist */,
 				A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */,
 				A897CE1229B7FE3F00BE3E5C /* ContentView.swift */,
@@ -101,6 +104,14 @@
 				A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A8EAC66729EF60860035E706 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8EAC66529EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		CA4F35D129D3A95C00C66AC8 /* View Models */ = {
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A897CE1829B7FE4000BE3E5C /* Preview Assets.xcassets in Resources */,
+				A8EAC66629EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 in Resources */,
 				A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
