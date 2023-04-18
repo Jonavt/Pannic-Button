@@ -11,7 +11,8 @@ struct EmergencyView: View {
     @Environment(\.dismiss) var dismiss
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var countdown = 10
-    let emergencyNumber = "911"
+    let emergencyNumber = "2281337838"
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 25) {
             Text("Llamar a emergencias")
@@ -56,6 +57,7 @@ struct EmergencyView: View {
                     let formattedString = tel + emergencyNumber
                     guard let url = URL(string: formattedString) else { return }
                     UIApplication.shared.open(url)
+                    
                 } label: {
                     HStack(alignment: .center, spacing: 0) {
                         Spacer(minLength: 0)
@@ -86,6 +88,11 @@ struct EmergencyView: View {
             }
             
             if countdown == 0 {
+                let tel = "tel://"
+                let formattedString = tel + emergencyNumber
+                guard let url = URL(string: formattedString) else { return }
+                UIApplication.shared.open(url)
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     dismiss()
                 }

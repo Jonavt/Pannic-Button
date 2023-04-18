@@ -18,6 +18,8 @@ struct SeleccionarContactosView: View {
     
     @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
     var isChanging: Bool
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 20) {
@@ -58,9 +60,15 @@ struct SeleccionarContactosView: View {
                                     newContact.phoneNumber = contact.phoneNumber?.stringValue
                                     try? moc.save()
                                 } else {
-                                    if let oldContact = savedContacts.first(where: { $0.phoneNumber == contact.phoneNumber?.stringValue}) {
+                                    if let oldContact = savedContacts.first {
                                         moc.delete(oldContact)
                                     }
+                                    
+                                    let newContact = Contact(context: moc)
+                                    newContact.firstName = contact.firstName
+                                    newContact.lastName = contact.lastName
+                                    newContact.phoneNumber = contact.phoneNumber?.stringValue
+                                    try? moc.save()
                                 }
                             } label: {
                                 ContactRow(contact: contact)
@@ -83,17 +91,17 @@ struct SeleccionarContactosView: View {
                     }
                     
                     if isChanging {
-                        
+                        dismiss()
                     }
                 } label: {
                     HStack {
                         Spacer()
-                        Text("Entrar")
+                        Text(isChanging ? "Aceptar" : "Entrar")
                         Spacer()
                     }
                 }
                 .padding()
-                .font(.title3)
+                .font(.title3.bold())
                 .foregroundColor(.white)
                 .background(Color.blue.opacity(0.9))
                 .cornerRadius(15)
@@ -103,6 +111,7 @@ struct SeleccionarContactosView: View {
             .padding()
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
+        .background(Color("Background1"))
         .toolbar(.hidden, for: .navigationBar)
         .onTapGesture {
             messageIsFocused = false

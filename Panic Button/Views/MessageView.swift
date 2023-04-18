@@ -125,7 +125,7 @@ struct MessageView: View {
                         .padding(.horizontal)
                     }
                     .sheet(isPresented: $showContacts) {
-                        
+                        SeleccionarContactosView(isChanging: true)
                     }
                 }
                 
@@ -202,6 +202,7 @@ struct MessageView: View {
             }
             
             if countdown == 0 {
+                sendMessage(phoneNumber: (savedContacts.first?.phoneNumber!)!)
                 dismiss()
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
                     showSuccess = true
