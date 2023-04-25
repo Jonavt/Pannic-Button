@@ -31,12 +31,20 @@ struct RegisterView: View {
             
             CustomField(searchText: $username, text: "Nombre")
                 .focused($messageIsFocused)
+                .accessibilityLabel(Text("Nombre"))
+                .accessibilityHint(Text("Campo para escribir tu nombre"))
+
             CustomField(searchText: $lastName, text: "Apellidos")
                 .focused($messageIsFocused)
+                .accessibilityLabel(Text("Apellidos"))
+                .accessibilityHint(Text("Campo para escribir tus apellidos"))
+
             CustomField(searchText: $age, text: "Edad")
                 .focused($messageIsFocused)
                 .keyboardType(.numberPad)
-            
+                .accessibilityLabel(Text("Edad"))
+                .accessibilityHint(Text("Campo para escribir tu edad"))
+
             
             Spacer()
             Button {
@@ -53,9 +61,9 @@ struct RegisterView: View {
             .tint(.blue)
             .cornerRadius(15)
             .controlSize(.large)
-//            .opacity(isComplete() ? 1 : 0.4)
             .disabled(!isComplete())
-            
+            .accessibilityLabel(Text("Siguiente"))
+            .accessibilityHint(Text("Va a la pantalla de mensaje"))
         }
         .padding()
         .navigationDestination(isPresented: $showMessage) {

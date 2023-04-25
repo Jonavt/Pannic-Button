@@ -68,6 +68,8 @@ struct DefineMessageView: View {
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(15)
                 .accentColor(.secondary)
+                .accessibilityLabel(Text("Atrás"))
+                .accessibilityHint(Text("Regresa a la panatalla de registro"))
                 
                 
                 Button {
@@ -88,6 +90,8 @@ struct DefineMessageView: View {
                 .cornerRadius(15)
                 .accentColor(.blue)
                 .disabled(text.isEmpty)
+                .accessibilityLabel(Text("Siguiente"))
+                .accessibilityHint(Text("Va a la pantalla de permiso de ubicación y contactos"))
             }
         }
         .padding()

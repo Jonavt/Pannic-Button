@@ -29,7 +29,9 @@ struct PermissionsView: View {
                     }
                 }
                 .foregroundColor(.primary)
-                
+                .accessibilityLabel(Text("Atrás"))
+                .accessibilityHint(Text("Regresa a la panatalla de mensaje"))
+
                 Spacer()
                 
                 Button {
@@ -45,6 +47,9 @@ struct PermissionsView: View {
                 }
                 .disabled((locVM.authorizationStatus == .authorizedAlways || locVM.authorizationStatus == .authorizedWhenInUse) && conVM.hasAccess ? false : true)
                 .opacity((locVM.authorizationStatus == .authorizedAlways || locVM.authorizationStatus == .authorizedWhenInUse) && conVM.hasAccess ? 1 : 0.5)
+                .accessibilityLabel(Text("Siguiente"))
+                .accessibilityHint(Text("Va a la pantalla de selección de contactos"))
+
             }
             .padding(.horizontal, 0)
             .padding(.bottom, -15)
@@ -95,7 +100,9 @@ struct PermissionsView: View {
                 .accentColor(.blue)
                 .allowsHitTesting(!conVM.hasAccess)
                 .opacity(conVM.hasAccess ? 0.5 : 1)
-                
+                .accessibilityLabel(Text("Dar permiso a contacos"))
+                .accessibilityHint(Text("Muestra el dialogo para dar permiso a tus contactos"))
+
                 Button {
                     locVM.requestPermission()
                 } label: {
@@ -121,6 +128,9 @@ struct PermissionsView: View {
                 .accentColor(.blue)
                 .allowsHitTesting(locVM.authorizationStatus == .authorizedAlways || locVM.authorizationStatus == .authorizedWhenInUse ? false : true)
                 .opacity(locVM.authorizationStatus == .authorizedAlways || locVM.authorizationStatus == .authorizedWhenInUse ? 0.5 : 1)
+                .accessibilityLabel(Text("Dar permiso a ubicación"))
+                .accessibilityHint(Text("Muestra el dialogo para dar permiso a tu ubicación"))
+
             }
             .padding(.horizontal)
         }
