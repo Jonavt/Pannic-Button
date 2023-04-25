@@ -25,7 +25,7 @@ struct DefineMessageView: View {
                 .scaledToFit()
                 .padding(.vertical, 30)
                 .padding(.horizontal, 20)
-                .frame(height: 300)
+                .frame(maxHeight: 300)
             
             TextEditor(text: $text)
                 .frame(height: 150)

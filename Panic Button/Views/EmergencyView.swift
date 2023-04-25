@@ -17,7 +17,9 @@ struct EmergencyView: View {
         VStack(alignment: .leading, spacing: 25) {
             Text("Llamar a emergencias")
                 .font(.largeTitle.weight(.heavy))
-
+                .minimumScaleFactor(0.7)
+                .lineLimit(nil)
+                    
             VStack(alignment: .center, spacing: 10) {
                 Text("Llamando a emergencias en:")
                     .font(.title3)

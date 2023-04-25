@@ -110,6 +110,9 @@ struct SeleccionarContactosView: View {
                 .cornerRadius(15)
                 .allowsHitTesting(savedContacts.count == 1 ? true : false)
                 .opacity(savedContacts.count == 1 ? 1 : 0.5)
+                .accessibilityLabel(Text(isChanging ? "Aceptar" : "Entrar"))
+                .accessibilityHint(Text(isChanging ? "Da acceso a la aplicación" : "Guarda tu nuevo contacto de emergencia"))
+
             }
             .padding()
         }

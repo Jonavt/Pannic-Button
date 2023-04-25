@@ -32,105 +32,107 @@ struct MessageView: View {
                     .font(.largeTitle.weight(.heavy))
                     .padding([.horizontal, .top])
                 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Mensaje a enviar")
-                        .font(.headline)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Mensaje a enviar")
+                            .font(.headline)
+                        
+                        TextEditor(text: $text)
+                            .frame(maxHeight: 150)
+                            .padding(10)
+                            .scrollContentBackground(.hidden)
+                            .background(.secondary.opacity(0.2))
+                            .cornerRadius(15)
+                            .ignoresSafeArea(.keyboard, edges: .bottom)
+                            .focused($messageIsFocused)
+                        
+                    }
+                    .padding(.horizontal)
                     
-                    TextEditor(text: $text)
-                        .frame(height: 150)
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Ubicación")
+                            .font(.headline)
+                        
+                        
+                        HStack(alignment: .center, spacing: 10) {
+                            Image(systemName: "mappin.and.ellipse")
+                            
+                            if let location = locVM.currentPlacemark {
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("\(location.name ?? "")")
+                                    if let address = location.postalAddress {
+                                        Text("\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)")
+                                            .font(.footnote)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                }
+                            } else {
+                                Text("Sin dirección")
+                            }
+                            
+                            Spacer()
+                        }
                         .padding(10)
-                        .scrollContentBackground(.hidden)
                         .background(.secondary.opacity(0.2))
                         .cornerRadius(15)
-                        .ignoresSafeArea(.keyboard, edges: .bottom)
-                        .focused($messageIsFocused)
-                    
-                }
-                .padding(.horizontal)
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Ubicación")
-                        .font(.headline)
-                    
-                    
-                    HStack(alignment: .center, spacing: 10) {
-                        Image(systemName: "mappin.and.ellipse")
                         
-                        if let location = locVM.currentPlacemark {
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text("\(location.name ?? "")")
-                                if let address = location.postalAddress {
-                                    Text("\(address.street), \(address.postalCode), \(address.city), \(address.state), \(address.country)")
-                                        .font(.footnote)
-                                        .foregroundColor(.secondary)
-                                }
-                                
-                            }
-                        } else {
-                            Text("Sin dirección")
-                        }
-                        
-                        Spacer()
                     }
-                    .padding(10)
-                    .background(.secondary.opacity(0.2))
-                    .cornerRadius(15)
+                    .padding(.horizontal)
                     
-                }
-                .padding(.horizontal)
-                
-                VStack(alignment: .leading, spacing: 15) {
-                    Text("Contacto de emergencia")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    
-                    HStack(alignment: .center, spacing: 15) {
-                        ForEach(savedContacts) { contact in
-                            HStack {
-                                Image(systemName: "person.fill")
-                                    .font(.system(size: 30))
-                                
-                                VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Contacto de emergencia")
+                            .font(.headline)
+                            .padding(.horizontal)
+                        
+                        HStack(alignment: .center, spacing: 15) {
+                            ForEach(savedContacts) { contact in
+                                HStack {
+                                    Image(systemName: "person.fill")
+                                        .font(.system(size: 30))
+                                    
+                                    VStack(alignment: .leading) {
+                                        Spacer()
+                                        
+                                        Text("\(contact.firstName ?? "") \(contact.lastName ?? "")")
+                                            .font(.title3.weight(.bold))
+                                            .foregroundColor(.primary)
+                                        
+                                        Text("\(contact.phoneNumber ?? "")")
+                                            .font(.headline)
+                                            .foregroundColor(.secondary)
+                                        
+                                        Spacer()
+                                    }
+                                    
                                     Spacer()
                                     
-                                    Text("\(contact.firstName ?? "") \(contact.lastName ?? "")")
-                                        .font(.title3.weight(.bold))
-                                        .foregroundColor(.primary)
+                                    Button {
+                                        buttonVibration()
+                                        showContacts = true
+                                    } label: {
+                                        Label("Cambiar", systemImage: "gear")
+                                    }
+                                    .tint(.primary)
+                                    .controlSize(.regular)
+                                    .buttonStyle(.borderedProminent)
+                                    .cornerRadius(15)
+                                    .foregroundColor(Color("InvertedText"))
                                     
-                                    Text("\(contact.phoneNumber ?? "")")
-                                        .font(.headline)
-                                        .foregroundColor(.secondary)
-                                    
-                                    Spacer()
                                 }
-                                
-                                Spacer()
-                                
-                                Button {
-                                    buttonVibration()
-                                    showContacts = true
-                                } label: {
-                                    Label("Cambiar", systemImage: "gear")
-                                }
-                                .tint(.primary)
-                                .controlSize(.regular)
-                                .buttonStyle(.borderedProminent)
+                                .padding(10)
+                                .background(LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing))
                                 .cornerRadius(15)
-                                .foregroundColor(Color("InvertedText"))
-                                
                             }
-                            .padding(10)
-                            .background(LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing))
-                            .cornerRadius(15)
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
-                    }
-                    .sheet(isPresented: $showContacts) {
-                        SeleccionarContactosView(isChanging: true)
+                        .sheet(isPresented: $showContacts) {
+                            SeleccionarContactosView(isChanging: true)
+                        }
                     }
                 }
                 
-                Spacer()
+//                Spacer()
                 
                 VStack(alignment: .center, spacing: 10) {
                     Text("Enviando mensaje en:")

@@ -26,7 +26,7 @@ struct RegisterView: View {
                 .scaledToFit()
                 .padding(.vertical, 30)
                 .padding(.horizontal, 20)
-                .frame(height: 300)
+                .frame(maxHeight: 300)
             
             
             CustomField(searchText: $username, text: "Nombre")
@@ -47,6 +47,7 @@ struct RegisterView: View {
 
             
             Spacer()
+            
             Button {
                 buttonVibration()
                 showMessage = true

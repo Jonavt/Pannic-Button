@@ -62,7 +62,7 @@ struct HomeView: View {
                         MapMarker(coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
                                   tint: Color.blue)
                     }
-                    .frame(minHeight: 400)
+                    .frame(minHeight: geo.size.height / 3)
                     .overlay(
                         Button(action: {
                             buttonVibration()
@@ -161,7 +161,9 @@ struct HomeView: View {
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
                     .accentColor(.secondary)
-                    
+//                    .fixedSize(horizontal: true, vertical: false)
+//                    .minimumScaleFactor(0.5)
+
                     Button {
                         buttonVibration()
                         showMessage = true
@@ -173,17 +175,17 @@ struct HomeView: View {
                                 .padding(.trailing, 5)
                             
                             Text("Enviar mensaje")
-                            
+
                             Spacer(minLength: 0)
                         }
                         .foregroundColor(Color("InvertedText"))
-                        .fixedSize(horizontal: true, vertical: false)
+//                        .fixedSize(horizontal: true, vertical: false)
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
                     .accentColor(.primary)
-                    
+//                    .minimumScaleFactor(0.5)
                     
                 }
             }
@@ -192,8 +194,10 @@ struct HomeView: View {
                 MessageView(showSuccess: $showSuccess)
             }
             .sheet(isPresented: $showEmergency) {
+                let hasHomeIndicator = geo.safeAreaInsets.bottom > 0
+
                 EmergencyView()
-                    .presentationDetents([.fraction(0.35)])
+                    .presentationDetents([.fraction(hasHomeIndicator ? 0.35 : 0.5)])
             }
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
