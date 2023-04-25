@@ -8,6 +8,9 @@
 import SwiftUI
 import MapKit
 import AVFoundation
+import MediaPlayer
+
+var player: AVAudioPlayer!
 
 struct HomeView: View {
     @State private var region = MKCoordinateRegion(
@@ -28,7 +31,8 @@ struct HomeView: View {
     @AppStorage("name") var username: String = ""
     @State var userTrackingMode: MapUserTrackingMode = .follow
     @State private var isButtonPressed = false
-
+//    var player: AVAudioPlayer!
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 25) {
@@ -94,18 +98,11 @@ struct HomeView: View {
                     .cornerRadius(20)
                     
                 }
-                
-                //            Spacer()
-                
+                                
                 Button {
-                    if isButtonPressed {
-                        stopSound()
-                    }
-                    else{
-                    self.sound()
-                    }
+                    MPVolumeView.setVolume(1.0)
+                    playSound()
                     isButtonPressed.toggle()
-                    
                     buttonVibration()
                 } label: {
                     HStack {
@@ -244,25 +241,27 @@ struct HomeView: View {
         }
     }
     
-    func sound(){
-        let url = Bundle.main.url(forResource: "K44XEWK-alarm-fire-alarm-buzzer-01", withExtension: "mp3")
-        // NOTHING IF URL IS EMPTY
+    func playSound() {
+        let url = Bundle.main.url(forResource: "alarmSound", withExtension: "mp3")
+
         guard url != nil else{
             return
         }
-        
-        do{
+
+        do {
             player = try AVAudioPlayer(contentsOf: url!)
             player.numberOfLoops = -1
-            player?.play()
+//            player.setVolume(80, fadeDuration: 0)
+
+            if !isButtonPressed {
+                player?.play()
+            } else {
+                player?.stop()
+            }
         } catch{
             print("error")
         }
         
-    }
-    
-    func stopSound(){
-        player.pause()
     }
 }
 

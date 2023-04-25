@@ -13,8 +13,9 @@
 		A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1229B7FE3F00BE3E5C /* ContentView.swift */; };
 		A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1429B7FE4000BE3E5C /* Assets.xcassets */; };
 		A897CE1829B7FE4000BE3E5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */; };
-		A8EAC66629EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8EAC66529EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 */; };
+		A8EAC66629EF607E0035E706 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8EAC66529EF607E0035E706 /* alarm.mp3 */; };
 		A8EFB40B29BAA54E00B5C742 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */; };
+		CA2650E429F887930055C493 /* alarmSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA2650E329F887930055C493 /* alarmSound.mp3 */; };
 		CA4F35D329D3A96C00C66AC8 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */; };
 		CA5FD2D329CA678F00E87463 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FD2D229CA678F00E87463 /* CustomField.swift */; };
 		CA5FD2D529CA6A3300E87463 /* DefineMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FD2D429CA6A3300E87463 /* DefineMessageView.swift */; };
@@ -37,8 +38,9 @@
 		A897CE1229B7FE3F00BE3E5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A897CE1429B7FE4000BE3E5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A8EAC66529EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "K44XEWK-alarm-fire-alarm-buzzer-01.mp3"; sourceTree = "<group>"; };
+		A8EAC66529EF607E0035E706 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
+		CA2650E329F887930055C493 /* alarmSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarmSound.mp3; sourceTree = "<group>"; };
 		CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		CA4F35D429D3ABED00C66AC8 /* Panic-Button-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Panic-Button-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CA5FD2D229CA678F00E87463 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
@@ -109,7 +111,8 @@
 		A8EAC66729EF60860035E706 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				A8EAC66529EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 */,
+				A8EAC66529EF607E0035E706 /* alarm.mp3 */,
+				CA2650E329F887930055C493 /* alarmSound.mp3 */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -224,7 +227,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A897CE1829B7FE4000BE3E5C /* Preview Assets.xcassets in Resources */,
-				A8EAC66629EF607E0035E706 /* K44XEWK-alarm-fire-alarm-buzzer-01.mp3 in Resources */,
+				A8EAC66629EF607E0035E706 /* alarm.mp3 in Resources */,
+				CA2650E429F887930055C493 /* alarmSound.mp3 in Resources */,
 				A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
