@@ -53,7 +53,8 @@ struct EmergencyView: View {
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(15)
                 .accentColor(.secondary)
-                
+                .accessibilityLabel(Text("Cancelar"))
+                .accessibilityHint(Text("Cancela la llamada"))
                 
                 Button {
                     buttonVibration()
@@ -79,7 +80,8 @@ struct EmergencyView: View {
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(15)
                 .accentColor(.primary)
-
+                .accessibilityLabel(Text("Llamar"))
+                .accessibilityHint(Text("Hace la llamada a emergencias"))
             }
 
             Spacer()

@@ -120,6 +120,8 @@ struct HomeView: View {
                     .padding()
                     .padding(.vertical, 15)
                     .frame(minHeight: 150)
+                    .accessibilityLabel(Text("Alarma"))
+                    .accessibilityHint(Text("Encender o apagar alarma"))
                     .background {
                         ZStack(alignment: .center) {
                             Color("Red")
@@ -161,6 +163,8 @@ struct HomeView: View {
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
                     .accentColor(.secondary)
+                    .accessibilityLabel(Text("Emergencias"))
+                    .accessibilityHint(Text("Abre la pantalla para llamar a emergencias"))
 //                    .fixedSize(horizontal: true, vertical: false)
 //                    .minimumScaleFactor(0.5)
 
@@ -185,6 +189,8 @@ struct HomeView: View {
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
                     .accentColor(.primary)
+                    .accessibilityLabel(Text("Enviar mensaje"))
+                    .accessibilityHint(Text("Va a la pantalla para enviar mensaje de emergencia"))
 //                    .minimumScaleFactor(0.5)
                     
                 }

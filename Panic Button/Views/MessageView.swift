@@ -118,7 +118,8 @@ struct MessageView: View {
                                     .buttonStyle(.borderedProminent)
                                     .cornerRadius(15)
                                     .foregroundColor(Color("InvertedText"))
-                                    
+                                    .accessibilityLabel(Text("Cambiar"))
+                                    .accessibilityHint(Text("Cambia el contacto de emergencia"))
                                 }
                                 .padding(10)
                                 .background(LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -168,7 +169,8 @@ struct MessageView: View {
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
                     .accentColor(.secondary)
-                    
+                    .accessibilityLabel(Text("Cancelar"))
+                    .accessibilityHint(Text("Cancela el envio del mensaje"))
                     
                     Button {
                         successVibration()
@@ -191,7 +193,8 @@ struct MessageView: View {
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(15)
                     .accentColor(.primary)
-                    
+                    .accessibilityLabel(Text("Enviar mensaje"))
+                    .accessibilityHint(Text("Te dirije a WhatsApp para enviar el mensaje"))
                 }
                 .padding([.horizontal, .bottom])
             }
