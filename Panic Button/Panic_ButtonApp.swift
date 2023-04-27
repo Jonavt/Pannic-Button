@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct Panic_ButtonApp: App {
-    let navigationViewModel = NavigationViewModel()
     let locationViewModel = LocationViewModel()
     let contactsViewModel = ContactsViewModel()
     let dataController = DataController()
@@ -18,7 +17,6 @@ struct Panic_ButtonApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
-                .environmentObject(navigationViewModel)
                 .environmentObject(locationViewModel)
                 .environmentObject(contactsViewModel)
         }

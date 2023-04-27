@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @EnvironmentObject var navVM: NavigationViewModel
     @AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding = false
 
     var body: some View {
@@ -34,6 +33,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(NavigationViewModel())
     }
 }

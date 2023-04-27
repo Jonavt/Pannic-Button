@@ -16,11 +16,9 @@
 		A8EAC66629EF607E0035E706 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8EAC66529EF607E0035E706 /* alarm.mp3 */; };
 		A8EFB40B29BAA54E00B5C742 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */; };
 		CA2650E429F887930055C493 /* alarmSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA2650E329F887930055C493 /* alarmSound.mp3 */; };
-		CA2650E629F88EC60055C493 /* ExplodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650E529F88EC60055C493 /* ExplodingView.swift */; };
 		CA4F35D329D3A96C00C66AC8 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */; };
 		CA5FD2D329CA678F00E87463 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FD2D229CA678F00E87463 /* CustomField.swift */; };
 		CA5FD2D529CA6A3300E87463 /* DefineMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FD2D429CA6A3300E87463 /* DefineMessageView.swift */; };
-		CA5FD2D929CA6E9700E87463 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FD2D829CA6E9700E87463 /* NavigationViewModel.swift */; };
 		CA7AFEE729C3D8210054D420 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7AFEE629C3D8210054D420 /* MessageView.swift */; };
 		CA7AFEE929C3D8290054D420 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7AFEE829C3D8290054D420 /* EmergencyView.swift */; };
 		CA7AFEEB29C3D8300054D420 /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7AFEEA29C3D8300054D420 /* PersonItem.swift */; };
@@ -42,12 +40,10 @@
 		A8EAC66529EF607E0035E706 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		CA2650E329F887930055C493 /* alarmSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarmSound.mp3; sourceTree = "<group>"; };
-		CA2650E529F88EC60055C493 /* ExplodingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplodingView.swift; sourceTree = "<group>"; };
 		CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		CA4F35D429D3ABED00C66AC8 /* Panic-Button-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Panic-Button-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CA5FD2D229CA678F00E87463 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		CA5FD2D429CA6A3300E87463 /* DefineMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineMessageView.swift; sourceTree = "<group>"; };
-		CA5FD2D829CA6E9700E87463 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		CA7AFEE629C3D8210054D420 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CA7AFEE829C3D8290054D420 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
 		CA7AFEEA29C3D8300054D420 /* PersonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
@@ -122,7 +118,6 @@
 		CA4F35D129D3A95C00C66AC8 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				CA5FD2D829CA6E9700E87463 /* NavigationViewModel.swift */,
 				CAFB897729CD0C2500690756 /* LocationViewModel.swift */,
 				CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */,
 			);
@@ -157,7 +152,6 @@
 				CA5FD2D429CA6A3300E87463 /* DefineMessageView.swift */,
 				A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */,
 				A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */,
-				CA2650E529F88EC60055C493 /* ExplodingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -243,7 +237,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA5FD2D929CA6E9700E87463 /* NavigationViewModel.swift in Sources */,
 				A87FF99B29CA66E8001CB328 /* RegisterView.swift in Sources */,
 				CA7AFEE729C3D8210054D420 /* MessageView.swift in Sources */,
 				CA4F35D329D3A96C00C66AC8 /* ContactsViewModel.swift in Sources */,
@@ -252,7 +245,6 @@
 				CAD316FC29BA913E00638C6C /* HomeView.swift in Sources */,
 				CA7AFEE929C3D8290054D420 /* EmergencyView.swift in Sources */,
 				A897CE1129B7FE3F00BE3E5C /* Panic_ButtonApp.swift in Sources */,
-				CA2650E629F88EC60055C493 /* ExplodingView.swift in Sources */,
 				CA5FD2D329CA678F00E87463 /* CustomField.swift in Sources */,
 				CAFB897829CD0C2500690756 /* LocationViewModel.swift in Sources */,
 				CA5FD2D529CA6A3300E87463 /* DefineMessageView.swift in Sources */,
