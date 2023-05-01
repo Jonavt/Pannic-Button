@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct SeleccionarContactosView: View {
+struct ContactSelectionView: View {
     @State private var searchText: String = ""
     @FocusState private var messageIsFocused: Bool
 
@@ -128,9 +128,9 @@ struct SeleccionarContactosView: View {
     }
 }
 
-struct SeleccionarContactosView_Previews: PreviewProvider {
+struct ContactSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SeleccionarContactosView(isChanging: true)
+        ContactSelectionView(isChanging: true)
             .environmentObject(LocationViewModel())
             .environmentObject(ContactsViewModel())
     }

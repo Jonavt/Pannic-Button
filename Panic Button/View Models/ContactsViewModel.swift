@@ -12,7 +12,7 @@ class ContactsViewModel: ObservableObject {
     @Published var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil)]
     @Published var hasAccess = false
     
-    func fetchingContacts() -> [ContactInfo]{
+    func fetchingContacts() -> [ContactInfo] {
         var contacts = [ContactInfo]()
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])

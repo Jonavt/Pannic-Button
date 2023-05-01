@@ -12,7 +12,6 @@ import MediaPlayer
 
 class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
-    @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 19.0549,
@@ -47,7 +46,6 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lastSeenLocation = locations.last
     }
 
     func fetchAddress(for location: CLLocation?) {

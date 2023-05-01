@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8033FFB29C13DE1007FA9EF /* SeleccionarContactosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */; };
+		A8033FFB29C13DE1007FA9EF /* ContactSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8033FFA29C13DE1007FA9EF /* ContactSelectionView.swift */; };
 		A87FF99B29CA66E8001CB328 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87FF99A29CA66E8001CB328 /* RegisterView.swift */; };
 		A897CE1129B7FE3F00BE3E5C /* Panic_ButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */; };
 		A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897CE1229B7FE3F00BE3E5C /* ContentView.swift */; };
 		A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1429B7FE4000BE3E5C /* Assets.xcassets */; };
 		A897CE1829B7FE4000BE3E5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */; };
-		A8EAC66629EF607E0035E706 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8EAC66529EF607E0035E706 /* alarm.mp3 */; };
 		A8EFB40B29BAA54E00B5C742 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */; };
 		CA2650E429F887930055C493 /* alarmSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA2650E329F887930055C493 /* alarmSound.mp3 */; };
 		CA4F35D329D3A96C00C66AC8 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */; };
@@ -21,7 +20,6 @@
 		CA5FD2D529CA6A3300E87463 /* DefineMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FD2D429CA6A3300E87463 /* DefineMessageView.swift */; };
 		CA7AFEE729C3D8210054D420 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7AFEE629C3D8210054D420 /* MessageView.swift */; };
 		CA7AFEE929C3D8290054D420 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7AFEE829C3D8290054D420 /* EmergencyView.swift */; };
-		CA7AFEEB29C3D8300054D420 /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7AFEEA29C3D8300054D420 /* PersonItem.swift */; };
 		CAD316FC29BA913E00638C6C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD316FB29BA913E00638C6C /* HomeView.swift */; };
 		CAD916F529D4C42900DFF1CE /* Contacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAD916F329D4C42900DFF1CE /* Contacts.xcdatamodeld */; };
 		CAD916F729D4C47300DFF1CE /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD916F629D4C47300DFF1CE /* DataController.swift */; };
@@ -30,14 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeleccionarContactosView.swift; sourceTree = "<group>"; };
+		A8033FFA29C13DE1007FA9EF /* ContactSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSelectionView.swift; sourceTree = "<group>"; };
 		A87FF99A29CA66E8001CB328 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A897CE0D29B7FE3F00BE3E5C /* Panic Button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Panic Button.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panic_ButtonApp.swift; sourceTree = "<group>"; };
 		A897CE1229B7FE3F00BE3E5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A897CE1429B7FE4000BE3E5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A897CE1729B7FE4000BE3E5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A8EAC66529EF607E0035E706 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		CA2650E329F887930055C493 /* alarmSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarmSound.mp3; sourceTree = "<group>"; };
 		CA4F35D229D3A96C00C66AC8 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
@@ -46,7 +43,6 @@
 		CA5FD2D429CA6A3300E87463 /* DefineMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineMessageView.swift; sourceTree = "<group>"; };
 		CA7AFEE629C3D8210054D420 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CA7AFEE829C3D8290054D420 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
-		CA7AFEEA29C3D8300054D420 /* PersonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
 		CAD316FB29BA913E00638C6C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CAD916F429D4C42900DFF1CE /* Contacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contacts.xcdatamodel; sourceTree = "<group>"; };
 		CAD916F629D4C47300DFF1CE /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -84,10 +80,10 @@
 		A897CE0F29B7FE3F00BE3E5C /* Panic Button */ = {
 			isa = PBXGroup;
 			children = (
-				A8EAC66729EF60860035E706 /* Files */,
 				CA4F35D429D3ABED00C66AC8 /* Panic-Button-Info.plist */,
 				A897CE1029B7FE3F00BE3E5C /* Panic_ButtonApp.swift */,
 				A897CE1229B7FE3F00BE3E5C /* ContentView.swift */,
+				A8EAC66729EF60860035E706 /* Files */,
 				CAD916FA29D4CB9000DFF1CE /* Core Data */,
 				CA4F35D129D3A95C00C66AC8 /* View Models */,
 				CA5FD2D629CA6DFE00E87463 /* Views */,
@@ -109,7 +105,6 @@
 		A8EAC66729EF60860035E706 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				A8EAC66529EF607E0035E706 /* alarm.mp3 */,
 				CA2650E329F887930055C493 /* alarmSound.mp3 */,
 			);
 			path = Files;
@@ -138,7 +133,6 @@
 		CA5FD2D729CA6E0700E87463 /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				CA7AFEEA29C3D8300054D420 /* PersonItem.swift */,
 				CA5FD2D229CA678F00E87463 /* CustomField.swift */,
 				CAD916F829D4CA8D00DFF1CE /* ContactRow.swift */,
 			);
@@ -151,7 +145,7 @@
 				A87FF99A29CA66E8001CB328 /* RegisterView.swift */,
 				CA5FD2D429CA6A3300E87463 /* DefineMessageView.swift */,
 				A8EFB40A29BAA54E00B5C742 /* PermissionsView.swift */,
-				A8033FFA29C13DE1007FA9EF /* SeleccionarContactosView.swift */,
+				A8033FFA29C13DE1007FA9EF /* ContactSelectionView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -224,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A897CE1829B7FE4000BE3E5C /* Preview Assets.xcassets in Resources */,
-				A8EAC66629EF607E0035E706 /* alarm.mp3 in Resources */,
 				CA2650E429F887930055C493 /* alarmSound.mp3 in Resources */,
 				A897CE1529B7FE4000BE3E5C /* Assets.xcassets in Resources */,
 			);
@@ -240,7 +233,6 @@
 				A87FF99B29CA66E8001CB328 /* RegisterView.swift in Sources */,
 				CA7AFEE729C3D8210054D420 /* MessageView.swift in Sources */,
 				CA4F35D329D3A96C00C66AC8 /* ContactsViewModel.swift in Sources */,
-				CA7AFEEB29C3D8300054D420 /* PersonItem.swift in Sources */,
 				A897CE1329B7FE3F00BE3E5C /* ContentView.swift in Sources */,
 				CAD316FC29BA913E00638C6C /* HomeView.swift in Sources */,
 				CA7AFEE929C3D8290054D420 /* EmergencyView.swift in Sources */,
@@ -248,7 +240,7 @@
 				CA5FD2D329CA678F00E87463 /* CustomField.swift in Sources */,
 				CAFB897829CD0C2500690756 /* LocationViewModel.swift in Sources */,
 				CA5FD2D529CA6A3300E87463 /* DefineMessageView.swift in Sources */,
-				A8033FFB29C13DE1007FA9EF /* SeleccionarContactosView.swift in Sources */,
+				A8033FFB29C13DE1007FA9EF /* ContactSelectionView.swift in Sources */,
 				CAD916F729D4C47300DFF1CE /* DataController.swift in Sources */,
 				CAD916F929D4CA8D00DFF1CE /* ContactRow.swift in Sources */,
 				A8EFB40B29BAA54E00B5C742 /* PermissionsView.swift in Sources */,

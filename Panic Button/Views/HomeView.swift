@@ -55,13 +55,7 @@ struct HomeView: View {
                 }
                 
                 if let location = locVM.locationManager.location {
-                    
-                    Map(coordinateRegion: $locVM.region, showsUserLocation: false, userTrackingMode: $userTrackingMode,
-                        annotationItems: [place])
-                    { place in
-                        MapMarker(coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
-                                  tint: Color.blue)
-                    }
+                    Map(coordinateRegion: $locVM.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $userTrackingMode)
                     .frame(minHeight: geo.size.height / 3)
                     .overlay(
                         Button(action: {
@@ -88,13 +82,9 @@ struct HomeView: View {
                     )
                     .cornerRadius(20)
                 } else {
-                    Map(coordinateRegion: $locVM.region,
-                        annotationItems: [place])
-                    { place in
-                        MapMarker(coordinate: place.location,
-                                  tint: Color.blue)
-                    }
-                    .frame(minHeight: 400)
+                    Map(coordinateRegion: $locVM.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $userTrackingMode)
+
+                    .frame(minHeight: geo.size.height / 3)
                     .cornerRadius(20)
                     
                 }

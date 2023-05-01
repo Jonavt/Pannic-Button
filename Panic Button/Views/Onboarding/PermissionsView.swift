@@ -137,7 +137,7 @@ struct PermissionsView: View {
         .padding()
         .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(isPresented: $showContacts) {
-            SeleccionarContactosView(isChanging: false)
+            ContactSelectionView(isChanging: false)
         }
     }
 }

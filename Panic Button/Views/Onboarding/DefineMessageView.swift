@@ -20,7 +20,7 @@ struct DefineMessageView: View {
                 .font(.largeTitle.weight(.heavy))
                 .lineLimit(2, reservesSpace: true)
             
-            Image("profileData")
+            Image("message")
                 .resizable()
                 .scaledToFit()
                 .padding(.vertical, 30)

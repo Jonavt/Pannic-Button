@@ -128,7 +128,7 @@ struct MessageView: View {
                             .padding(.horizontal)
                         }
                         .sheet(isPresented: $showContacts) {
-                            SeleccionarContactosView(isChanging: true)
+                            ContactSelectionView(isChanging: true)
                         }
                     }
                 }
