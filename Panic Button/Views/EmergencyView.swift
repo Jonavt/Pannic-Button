@@ -89,6 +89,10 @@ struct EmergencyView: View {
         .padding()
         .padding(.top, 25)
         .onReceive(timer) { time in
+//            if UIAccessibility.isVoiceOverRunning && countdown == 10 {
+//                countdown = 20
+//            }
+
             if countdown <= 10 && countdown > 0 {
                 countdown -= 1
             }

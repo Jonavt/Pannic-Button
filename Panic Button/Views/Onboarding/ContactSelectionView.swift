@@ -42,17 +42,6 @@ struct ContactSelectionView: View {
                             "\(cont)".lowercased().contains(self.searchText.lowercased())
                         })) { contact in
                             Button {
-//                                if !savedContacts.contains(where: { contact.phoneNumber?.stringValue == $0.phoneNumber}) {
-//                                    let newContact = Contact(context: moc)
-//                                    newContact.firstName = contact.firstName
-//                                    newContact.lastName = contact.lastName
-//                                    newContact.phoneNumber = contact.phoneNumber?.stringValue
-//                                    try? moc.save()
-//                                } else {
-//                                    if let oldContact = savedContacts.first(where: { $0.phoneNumber == contact.phoneNumber?.stringValue}) {
-//                                        moc.delete(oldContact)
-//                                    }
-//                                }
                                 if savedContacts.count == 0 {
                                     let newContact = Contact(context: moc)
                                     newContact.firstName = contact.firstName
@@ -85,7 +74,6 @@ struct ContactSelectionView: View {
                     messageIsFocused = false
                 }
 
-//                Spacer()
                 
                 Button {
                     buttonVibration()

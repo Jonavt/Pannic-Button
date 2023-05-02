@@ -42,16 +42,6 @@ struct HomeView: View {
                         
                     
                     Spacer()
-                    
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "gear")
-                    }
-                    .foregroundColor(.primary)
-                    .padding(5)
-                    .background(Color.secondary.opacity(0.2))
-                    .clipShape(Circle())
                 }
                 
                 if let location = locVM.locationManager.location {
@@ -78,15 +68,16 @@ struct HomeView: View {
                                     .padding(10)
                             }
                         })
+                        .accessibilityLabel(Text("Ubicación actual"))
+                        .accessibilityHint(Text("Presiona para centrar el mapa en tu ubicación actual"))
+
                         , alignment: Alignment(horizontal: .trailing, vertical: .bottom)
                     )
                     .cornerRadius(20)
                 } else {
                     Map(coordinateRegion: $locVM.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $userTrackingMode)
-
                     .frame(minHeight: geo.size.height / 3)
                     .cornerRadius(20)
-                    
                 }
                                 
                 Button {

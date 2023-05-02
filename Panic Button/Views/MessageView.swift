@@ -15,7 +15,7 @@ struct MessageView: View {
     @Environment(\.dismiss) var dismiss
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var countdown = 59
+    @State var countdown = 90
     
     @Binding var showSuccess: Bool
     @FetchRequest(sortDescriptors: []) var savedContacts: FetchedResults<Contact>
@@ -24,6 +24,7 @@ struct MessageView: View {
     @AppStorage("name") var username: String = ""
     @AppStorage("lastName") var lastName: String = ""
     @State var showContacts = false
+    
     
     var body: some View {
         GeometryReader { geo in
@@ -45,6 +46,7 @@ struct MessageView: View {
                             .cornerRadius(15)
                             .ignoresSafeArea(.keyboard, edges: .bottom)
                             .focused($messageIsFocused)
+                            
                         
                     }
                     .padding(.horizontal)
@@ -205,19 +207,21 @@ struct MessageView: View {
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .onReceive(timer) { time in
-            if countdown <= 59 && countdown > 0 {
-                countdown -= 1
-            }
-            
-            if countdown == 0 {
-                successVibration()
-                sendMessage(phoneNumber: (savedContacts.first?.phoneNumber!)!)
-                dismiss()
-                withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
-                    showSuccess = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
-                            showSuccess = false
+            if !showContacts {
+                if countdown <= 90 && countdown > 0 {
+                    countdown -= 1
+                }
+                
+                if countdown == 0 {
+                    successVibration()
+                    sendMessage(phoneNumber: (savedContacts.first?.phoneNumber!)!)
+                    dismiss()
+                    withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 1)) {
+                        showSuccess = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0)) {
+                                showSuccess = false
+                            }
                         }
                     }
                 }
